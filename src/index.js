@@ -6,20 +6,20 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
 // First Reducer
-const count = (state = 0, action) => {
-    console.log('In count Reducer');
-    return state;
-}
+// const count = (state = 0, action) => {
+//     // console.log('In count Reducer');
+//     return state;
+// }
 
 // Second Reducer
 const pizzaList = (state = ['Pepperoni, Sausage'], action) => {
-    console.log("In pizzaList Reducer");
+    // console.log("In pizzaList Reducer");
     return state;
 }
 
 const pizzaInstance = createStore(
     combineReducers({
-        count,
+        // count,
         pizzaList,
     })
 )

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './App.css';
+// import PizzaItems from '../PizzaItems/PizzaItems';
 
 function App() {
+
+  const reduxStore = useSelector(store => store);
+
+  const count = useSelector(store => store.count);
 
   const exampleArray = [{
     customer_name: "Donatello",
@@ -28,15 +34,15 @@ function App() {
     pizzas: [{
       id: "1",
       quantity: "1"
-    },{
+    }, {
       id: "2",
       quantity: "1"
     }]
   }];
 
-  const [pizzaArray, setPizzaArray] = useState(exampleArray);
+  const [pizzaArray, setPizzaArray] = useState([]);
 
-  
+
 
   useEffect(() => {
     getPizza();
@@ -47,10 +53,10 @@ function App() {
       method: 'GET',
       url: '/api/pizza'
     }).then((result) => {
-      console.log('', result.data);
-      // setPizzaArray(result.data)
+      console.log('result from GET request', result.data);
+      setPizzaArray(result.data)
     }).catch((error) => {
-      console.log('', error);
+      console.log('Error in GET request', error);
       alert('HEY HEY HEY, WHATS PROBLEMMMMM?');
     })
   }
@@ -58,12 +64,18 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
+        <h1 className='App-title'> PizzaP Pizzaria </h1>
       </header>
 
-      <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
+      <img src='images/pizza_photo.png' />
+      {/* <PizzaItems pizzaArrayProp={pizzaArray}/> */}
 
+      {/* {pizzaArray.map((pizza) => {
+      })} */}
+      <div>
+        {JSON.stringify()}
+      </div>
     </div>
   );
 }
