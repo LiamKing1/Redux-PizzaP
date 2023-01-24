@@ -36,11 +36,7 @@ function App() {
 
   const [pizzaArray, setPizzaArray] = useState(exampleArray);
 
-
-  // <Router>
-  //   <Route>
-  //   </Route>
-  // </Router>
+  
 
   useEffect(() => {
     getPizza();
