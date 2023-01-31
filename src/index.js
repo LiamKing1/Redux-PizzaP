@@ -12,8 +12,11 @@ import { createStore, combineReducers } from 'redux';
 // }
 
 // Second Reducer
-const pizzaList = (state = ['Pepperoni, Sausage'], action) => {
-    // console.log("In pizzaList Reducer");
+const pizzaList = (state = [], action) => {
+    console.log("In pizzaList Reducer", action.payload);
+    if(action.type === 'SET_PIZZA') {
+        return action.payload;
+    }
     return state;
 }
 

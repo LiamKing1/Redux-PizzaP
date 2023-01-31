@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color:firebrick;
 }
 
 .App-header {
@@ -12,4 +13,16 @@
 
 .App-title {
   font-size: 2em;
+}
+
+img {
+  height: 300px;
+  width: 300px;
+  padding: 50px;
+  border-radius: 10px;
+  border-color: bisque;
+}
+
+.column {
+  display: inline-block;
 }
