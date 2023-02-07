@@ -1,54 +1,54 @@
-import { useSelector, useDispatch } from "react-redux";
-import {useState} from 'react';
+import { useDispatch } from "react-redux";
+import { useState } from 'react';
 
-function OrderItems(){
-    const orderList = useSelector(store => store.orderList);
-    const Dispatch = useDispatch();
-    
+function OrderItems() {
+
+    const dispatch = useDispatch();
+
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [zip, setZip] = useState('');
-    const [total, setTotal] = useState('');
-    const [type, setType] = useState('');
+    const [cities, setCities] = useState('');
+    const [zipCode, setZipCode] = useState('');
+    const [orderTotal, setTotal] = useState('');
+    const [orderType, setType] = useState('');
     const [pizza, setPizza] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        Dispatch({
+        dispatch({
             type: 'ORDER_LIST',
             payload: {
-                name: {name},
-                address: {address},
-                city: {city},
-                zip: {zip},
-                total: {total},
-                type: {type},
-                pizza: {pizza}
+                customer_name: name,
+                street_address: address,
+                city: cities,
+                zip: zipCode,
+                total: orderTotal,
+                type: orderType,
+                pizzas: pizza
             }
         });
         setName('');
         setAddress('');
-        setCity('');
-        setZip('');
+        setCities('');
+        setZipCode('');
         setTotal('');
         setType('');
         setPizza('');
     }
 
-    return(
-      <>
-      <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(event) => setName(event.target.value)}  > Customer Name: </input>
-        <input value={address} onChange={(event) => setAddress(event.target.value)} > Address: </input>
-        <input value={city} onChange={(event) => setCity(event.target.value)} > City: </input>
-        <input value={zip} onChange={(event) => setZip(event.target.value)} > Zip: </input>
-        <input value={total} onChange={(event) => setTotal(event.target.value)} > Total: </input>
-        <input value={type} onChange={(event) => setType(event.target.value)} > Type: </input>
-        <input value={pizza} onChange={(event) => setPizza(event.target.value)} > Pizzas: </input>
-        <button type='submit'> Add to Order </button>
-      </form>
-      </>  
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input value={name} onChange={(event) => setName(event.target.value)} placeholder='Customer Name:' />
+                <input value={address} onChange={(event) => setAddress(event.target.value)} placeholder='Address' />
+                <input value={cities} onChange={(event) => setCities(event.target.value)} placeholder='City:'/>
+                <input value={zipCode} onChange={(event) => setZipCode(event.target.value)} placeholder='Zip:'/>
+                <input value={orderTotal} onChange={(event) => setTotal(event.target.value)} placeholder='Total:'/>
+                <input value={orderType} onChange={(event) => setType(event.target.value)} placeholder='Type' />
+                <input value={pizza} onChange={(event) => setPizza(event.target.value)} placeholder='Pizza Choice' />
+                <button type='submit'> Add to Order </button>
+            </form>
+        </div>
     );
 }
 

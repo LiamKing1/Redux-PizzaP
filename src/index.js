@@ -13,8 +13,16 @@ import { createStore, combineReducers } from 'redux';
 
 // Second Reducer
 const pizzaList = (state = [], action) => {
-    console.log("In pizzaList Reducer", action.payload);
+    // console.log("In pizzaList Reducer", action.payload);
     if(action.type === 'SET_PIZZA') {
+        return action.payload;
+    }
+    return state;
+}
+
+const orderList = (state = [], action) => {
+    // console.log('In orderList reducer'); 
+    if(action.type === 'ORDER_LIST') {
         return action.payload;
     }
     return state;
@@ -24,6 +32,7 @@ const pizzaInstance = createStore(
     combineReducers({
         // count,
         pizzaList,
+        orderList,
     })
 )
 

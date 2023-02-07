@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 function PizzaItems() {
     const pizzaList = useSelector(store => store.pizzaList);
-    console.log('pizzaItems contains', pizzaList);
+    // console.log('pizzaItems contains', pizzaList);
     return (
         <>
             <div className='column'>

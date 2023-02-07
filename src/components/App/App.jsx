@@ -71,17 +71,11 @@ function App() {
         <h1 className='App-title'> PizzaP Pizzaria </h1>
       </header>
 
+      <OrderItems />
       <p>Pizza is great.</p>
       <img src='images/pizza_photo.png' />
       <p> Pizza lists:</p>
       <PizzaItems />
-      <OrderItems />
-
-      {/* {pizzaList.map((pizza) => {
-      })} */}
-      <div>
-        {JSON.stringify()}
-      </div>
     </div>
   );
 }
