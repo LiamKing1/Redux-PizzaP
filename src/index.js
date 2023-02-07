@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import logger from 'redux-logger';
 
 // First Reducer
 // const count = (state = 0, action) => {
@@ -28,12 +29,72 @@ const orderList = (state = [], action) => {
     return state;
 }
 
+const cusName = (state = '', action) => {
+    if(action.type === 'CUS_NAME') {
+        return action.payload
+    }
+    return state;
+}
+
+const cusAddress = (state = '', action) => {
+    if(action.type === 'CUS_ADDRESS') {
+        return action.payload
+    }
+    return state;
+}
+
+const cusCity = (state = '', action) => {
+    if(action.type === 'CUS_CITY') {
+        return action.payload
+    }
+    return state;
+}
+
+const cusZip = (state = '', action) => {
+    if(action.type === 'CUS_ZIP') {
+        return action.payload
+    }
+    return state;
+}
+
+const cusTotal = (state = 0, action) => {
+    if(action.type === 'CUS_TOTAL') {
+        return action.payload
+    }
+    return state;
+}
+
+const orderType = (state = 'delivery', action) => {
+    if(action.type === 'SET_TYPE'){
+        if(action.payload === 'delivery') {
+            state = 'delivery';
+        } else if (action.payload === 'pickup') {
+            state = 'pick-up';
+    }};
+    return state;
+}
+
+const pizzaType = (state = '', action) => {
+    if(action.type === 'PIZZA_TYPE') {
+        return action.payload
+    }
+    return state;
+}
+
 const pizzaInstance = createStore(
     combineReducers({
         // count,
         pizzaList,
         orderList,
-    })
+        pizzaType,
+        orderType,
+        cusTotal,
+        cusZip,
+        cusCity,
+        cusAddress,
+        cusName
+    }),
+    applyMiddleware(logger)
 )
 
 

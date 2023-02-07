@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color:firebrick;
+
 }
 
 .App-header {
@@ -26,3 +27,48 @@ img {
 .column {
   display: inline-block;
 }
+
+.edit {
+  font-size: x-large;
+  padding: 30px;
+}
+
+#address {
+  text-align: left;
+  padding: 20px;
+}
+
+#type {
+  text-align: right;
+  padding: 20px;
+}
+
+.admin {
+  padding: 50px;
+  border: 30px;
+  background-color: blanchedalmond;
+}
+
+.t-head {
+  align-items: center;
+  padding: 50px;
+  margin: 50px;
+  border: 10px solid;
+  border-radius: 30px;
+  border-color: black;
+  background-color: azure;
+  width: 75%;
+  height: 25%;
+}
+.tr, th, td {
+  border: 2px solid;
+  border-radius: 1px;
+  -webkit-margin-collapse: collapse;
+}
+
+.move-it {
+  text-align: right;
+  display: block;
+  padding: 30px;
+}
+/* display: inline-block; */

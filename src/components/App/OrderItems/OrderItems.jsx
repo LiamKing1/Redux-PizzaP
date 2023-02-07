@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 function OrderItems() {
-
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const [name, setName] = useState('');
@@ -39,14 +40,14 @@ function OrderItems() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input value={name} onChange={(event) => setName(event.target.value)} placeholder='Customer Name:' />
+                <input value={name} onChange={(event) => setName(event.target.value)} placeholder='Customer Name' />
                 <input value={address} onChange={(event) => setAddress(event.target.value)} placeholder='Address' />
-                <input value={cities} onChange={(event) => setCities(event.target.value)} placeholder='City:'/>
-                <input value={zipCode} onChange={(event) => setZipCode(event.target.value)} placeholder='Zip:'/>
-                <input value={orderTotal} onChange={(event) => setTotal(event.target.value)} placeholder='Total:'/>
+                <input value={cities} onChange={(event) => setCities(event.target.value)} placeholder='City'/>
+                <input value={zipCode} onChange={(event) => setZipCode(event.target.value)} placeholder='Zip'/>
+                <input value={orderTotal} onChange={(event) => setTotal(event.target.value)} placeholder='Total'/>
                 <input value={orderType} onChange={(event) => setType(event.target.value)} placeholder='Type' />
                 <input value={pizza} onChange={(event) => setPizza(event.target.value)} placeholder='Pizza Choice' />
-                <button type='submit'> Add to Order </button>
+                <button type='submit' onClick={() => history.push('/checkout')}> Add to Order </button>
             </form>
         </div>
     );

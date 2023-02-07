@@ -4,12 +4,14 @@ import axios from 'axios';
 import './App.css';
 import { useDispatch } from 'react-redux';
 import PizzaItems from '../PizzaItems/PizzaItems';
-import OrderItems from './OrderItems/OrderItems';
+import OrderItems from '../OrderItems/OrderItems';
+import Checkout from '../Checkout/Checkout';
+import { HashRouter as Router, Route } from 'react-router-dom';
 // import PizzaItems from '../PizzaItems/PizzaItems';
 
 function App() {
 
-  const reduxStore = useSelector(store => store);
+  const total = useSelector(store => store.cusTotal);
   // const pizzaList = useSelector(store => store.pizzaList);
 
   const Dispatch = useDispatch();
@@ -44,7 +46,7 @@ function App() {
     }]
   }];
 
-  
+
   useEffect(() => {
     getPizza();
   }, [])
@@ -69,13 +71,23 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <h1 className='App-title'> PizzaP Pizzaria </h1>
+        <h3 className='move-it'>Total: {total}</h3>
       </header>
+      <Router>
+        <Route exact path='/'>
+          <PizzaItems />
+        </Route>
+        <Route exact path='/order'>
+          <OrderItems />
+        </Route>
+        <Route exact path='/checkout'>
+          <Checkout />
+        </Route>
+      </Router>
 
-      <OrderItems />
-      <p>Pizza is great.</p>
-      <img src='images/pizza_photo.png' />
-      <p> Pizza lists:</p>
-      <PizzaItems />
+      {/* <p>Pizza is great.</p> */}
+      {/* <img src='images/pizza_photo.png' /> */}
+      {/* <p> Pizza lists:</p> */}
     </div>
   );
 }
